@@ -4,18 +4,20 @@ const router = require('express').Router();
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './controllers')
+        cb(null, './files')
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
     }
 })
 const upload = multer({storage});
-const mw = require('../controllers/controller');
+const {getHtml, uploadData} = require('../controllers/controller');
+const { getQuery } = require("../controllers/getData");
 
 
 router
-.get('/', mw.getHtml)
-.post('/subir', upload.single('file'), mw.uploadData);
+.get('/', getHtml)
+.post('/subir', upload.single('file'), uploadData)
+.get('/getQuery/:nombre/:numeroControl/:especialidad/:semestre/:resultado/:actividad', getQuery);
 
 module.exports = router;

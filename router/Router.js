@@ -1,6 +1,7 @@
 'use strict'
 
 const router = require('express').Router();
+const res = require('express/lib/response');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -11,13 +12,15 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage});
-const {getHtml, uploadData} = require('../controllers/controller');
+const {getLogIn, uploadData} = require('../controllers/controller');
+const { checkUser } = require("../controllers/checkUsers");
 const { getQuery } = require("../controllers/getData");
 
 
 router
-.get('/', getHtml)
+.get('/', getLogIn)
 .post('/subir', upload.single('file'), uploadData)
-.get('/getQuery/:nombre/:numeroControl/:especialidad/:semestre/:resultado/:actividad', getQuery);
+.get('/getQuery/:nombre/:numeroControl/:especialidad/:semestre/:resultado/:actividad', getQuery)
+.post('/home', checkUser);
 
 module.exports = router;

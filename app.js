@@ -10,8 +10,8 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(morgan('dev'));
-//app.use(bodyParser.urlencoded({extended: false}));
-//app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 app.use('/', router);
 

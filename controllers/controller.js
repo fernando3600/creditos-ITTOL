@@ -33,11 +33,12 @@ let uploadData = async (req, res) => {
     fs.unlinkSync(path)
 }
 
-let getHtml = async (req, res) => {
-    res.sendFile('vistas/index.html', { root: __dirname });
+let getLogIn = async (req, res) => {
+    res.sendFile('desing/login.html', { root: __dirname });
 }
+
 
 module.exports = {
     uploadData,
-    getHtml
+    getLogIn
 }

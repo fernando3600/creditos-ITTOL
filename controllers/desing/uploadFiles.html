@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Form Data</title>
+</head>
+<style>
+  :root {
+    --shadowColor: hsla(0, 0%, 0%, 0.08);
+  }
+
+  form {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    width: 400px;
+    margin: 50px auto;
+    padding: 2em 1.5em;
+    background: white;
+  }
+
+  label {
+    text-align: center;
+    display: block;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 3px 2px -2px var(--shadowColor);
+  }
+
+  input {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px 0 var(--shadowColor);
+    font-size: 14px;
+    padding: .8em 1em;
+    box-sizing: border-box;
+    border: 1px solid var(--shadowColor);
+    margin-bottom: 1em;
+    outline: 0;
+  }
+
+  input:focus {
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, .5);
+  }
+
+  button {
+    color: white;
+    background: #38b765;
+    border: none;
+    width: 100%;
+    padding: .8em 1em;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+
+  .preview {
+    position: relative;
+  }
+
+  .preview img {
+    max-width: 100%;
+  }
+
+  .preview p {
+    position: absolute;
+    background: white;
+    left: 5px;
+    top: 5px;
+  }
+</style>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="http://localhost:3500/home">Creditos Extra Escolares</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3500/getTable">Ver tabla de creditos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3500/getAdvancedTable">Busqueda avanzada</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3500/uploadFileView">Subir Excel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3500/">Salir</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <form action="/subir" method="post" enctype="multipart/form-data">
+      <label style="padding-bottom: 70px;">Agregar Excel</label>
+      <input type="file" name="file" id="file" style="padding-bottom: 40px; margin-bottom: 50px;" required>
+      <button type="submit" id="uploadBtn">Subir excel</button>
+    </form>
+  </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+  let btnUpload = document.getElementById('uploadBtn');
+  btnUpload.style.visibility = 'visible';
+  btnUpload.addEventListener("click", () => {
+    const check = document.getElementById('file').value;
+    if (check) {
+      btnUpload.style.visibility = 'hidden';
+    }
+  })
+</script>
+
+</html>

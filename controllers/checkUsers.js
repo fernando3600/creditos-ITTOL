@@ -9,7 +9,7 @@ let checkUser = async (req, res) => {
             let user = await modelUser.modelUsers.find({user: req.body.user, password: req.body.pass});
             console.log(user)
             if (user.length) {
-                res.send({ exito: "usuario encontrado" });
+                res.send({ exito: true });
             }else{
                 res.send({ notFound: "El usuario no existe, por favor verifique" });
             }
@@ -22,10 +22,6 @@ let checkUser = async (req, res) => {
         res.send({ err: "El campo password esta vacio, por favor verifique." });
     }
 }
-
-//const addUser = new modelUser.modelUsers({user: req.body.user,
-//    password: req.body.pass});
-//await addUser.save();
 
 module.exports = {
     checkUser

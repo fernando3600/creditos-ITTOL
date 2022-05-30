@@ -112,67 +112,19 @@
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
-                <div class="card-header">
-                    <h3>Inicio de sesión</h3>
+                <div class="card-header" style="color: white;">
+                  Exito
                 </div>
                 <div class="card-body">
-                    <form method="post">
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="username", id="user">
-
-                        </div>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="password" id="pass">
-                        </div>
-                        <div class="form-group">
-                            <input type="button" value="Ingresar" class="btn float-right login_btn" id="login">
-                        </div>
-                    </form>
+                  <p class="card-text" style="color: white;">el estatus de los estudiantes fue subido correctamente !</p>
+                  <a href="http://localhost:3500/uploadFileView" class="btn btn-primary">Subir mas datos</a>
+                  <a href="http://localhost:3500/getTable" class="btn btn-secondary">Ir a tabla de datos</a>
                 </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
-                        ¿Aun no tiene cuenta?<a href="http://localhost:3500/singUpView">Registrate</a>
-                    </div>
-                </div>
-            </div>
+              </div>
         </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#login').click(function () {
-            $.ajax({
-                type: "post",
-                url: "http://localhost:3500/home", 
-                data: {user: $('#user').val(),
-                        pass: $('#pass').val()},
-                dataType: "json",
-                success: function (result) {
-                    if(result.err){
-                        alert(result.err)
-                    }
-                    if(result.notFound){
-                        return alert(result.notFound)
-                    }
-                    if(result.exito){
-                        window.location.href = "http://localhost:3500/home";
-                    }
-                },
-                error: (err) => {
-                    alert(err)
-                }
-            });
-        });
-    });
-</script>
 
 </html>

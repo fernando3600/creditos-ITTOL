@@ -12,15 +12,24 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({storage});
-const {getLogIn, uploadData} = require('../controllers/controller');
+const {getLogIn, uploadData, getUploadFile, getHome} = require('../controllers/controller');
 const { checkUser } = require("../controllers/checkUsers");
-const { getQuery } = require("../controllers/getData");
+const { getQuery, getAllData } = require("../controllers/getData");
+const { singUp, singUpView } = require("../controllers/singUp");
+const { getTableView, getAdvancedTableView } = require("../controllers/table");
 
 
 router
 .get('/', getLogIn)
-.post('/subir', upload.single('file'), uploadData)
+.get('/singUpView', singUpView)
+.get('/uploadFileView', getUploadFile)
+.get('/getTable', getTableView)
+.get('/getAdvancedTable', getAdvancedTableView)
+.get('/home', getHome)
 .get('/getQuery/:nombre/:numeroControl/:especialidad/:semestre/:resultado/:actividad', getQuery)
-.post('/home', checkUser);
+.get('/getAllData', getAllData)
+.post('/subir', upload.single('file'), uploadData)
+.post('/home', checkUser)
+.post('/singUp', singUp);
 
 module.exports = router;

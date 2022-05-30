@@ -113,7 +113,7 @@
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>Inicio de sesión</h3>
+                    <h3>Registro de usuario</h3>
                 </div>
                 <div class="card-body">
                     <form method="post">
@@ -121,24 +121,19 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="username", id="user">
+                            <input type="email" class="form-control" placeholder="username", id="newUser">
 
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="password" id="pass">
+                            <input type="password" class="form-control" placeholder="password" id="newPass">
                         </div>
                         <div class="form-group">
-                            <input type="button" value="Ingresar" class="btn float-right login_btn" id="login">
+                            <input type="button" value="Registrar" class="btn float-right login_btn" id="register">
                         </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
-                        ¿Aun no tiene cuenta?<a href="http://localhost:3500/singUpView">Registrate</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -149,25 +144,23 @@
 
 <script>
     $(document).ready(function () {
-        $('#login').click(function () {
+        $('#register').click(function () {
             $.ajax({
                 type: "post",
-                url: "http://localhost:3500/home", 
-                data: {user: $('#user').val(),
-                        pass: $('#pass').val()},
+                url: "http://localhost:3500/singUp", 
+                data: {user: $('#newUser').val(),
+                        pass: $('#newPass').val()},
                 dataType: "json",
                 success: function (result) {
                     if(result.err){
                         alert(result.err)
                     }
-                    if(result.notFound){
-                        return alert(result.notFound)
-                    }
-                    if(result.exito){
-                        window.location.href = "http://localhost:3500/home";
+                    if(result.scc){
+                        window.location.href = "http://localhost:3500/";
                     }
                 },
                 error: (err) => {
+                    console.log(err);
                     alert(err)
                 }
             });

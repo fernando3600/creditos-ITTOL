@@ -31,14 +31,25 @@ let uploadData = async (req, res) => {
         }
     }
     fs.unlinkSync(path)
+    res.sendFile('desing/success.html', { root: __dirname });
 }
 
 let getLogIn = async (req, res) => {
     res.sendFile('desing/login.html', { root: __dirname });
 }
 
+let getUploadFile = async (req, res) => {
+    res.sendFile('desing/uploadFiles.html', { root: __dirname });
+}
+
+let getHome = async (req, res) => {
+    res.sendFile('desing/home.html', { root: __dirname });
+}
+
 
 module.exports = {
     uploadData,
-    getLogIn
+    getLogIn,
+    getUploadFile,
+    getHome
 }

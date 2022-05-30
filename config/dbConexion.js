@@ -3,8 +3,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 require('dotenv').config();
-
-const devMx = `mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@api-rest.cdtyj.mongodb.net/${process.env.HOST_DB}?retryWrites=true&w=majority`;
+const devMx = `mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@cluster0.4au1nc0.mongodb.net/?retryWrites=true&w=majority`;
 const connection = mongoose.createConnection(devMx, function (err) {
     if (err)
         console.log('Unable to connect to database', err);

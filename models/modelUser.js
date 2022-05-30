@@ -6,8 +6,8 @@ let schema = mongoose.Schema;
 
 
 const users = new schema({
-    user: {type: String},
-    password: {type: String}
+    user: { type: String, unique: true },
+    password: { type: String }
 });
 
 

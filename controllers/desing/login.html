@@ -137,7 +137,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-center links">
-                        ¿Aun no tiene cuenta?<a href="http://localhost:3500/singUpView">Registrate</a>
+                        ¿Aun no tiene cuenta?<a href="http://217.71.203.210:3500/singUpView">Registrate</a>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
         $('#login').click(function () {
             $.ajax({
                 type: "post",
-                url: "http://localhost:3500/home", 
+                url: "http://217.71.203.210:3500/home", 
                 data: {user: $('#user').val(),
                         pass: $('#pass').val()},
                 dataType: "json",
@@ -164,7 +164,7 @@
                         return alert(result.notFound)
                     }
                     if(result.exito){
-                        window.location.href = "http://localhost:3500/home";
+                        window.location.href = "http://217.71.203.210:3500/home";
                     }
                 },
                 error: (err) => {

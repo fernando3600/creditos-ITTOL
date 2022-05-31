@@ -147,7 +147,7 @@
         $('#register').click(function () {
             $.ajax({
                 type: "post",
-                url: "http://localhost:3500/singUp", 
+                url: "http://217.71.203.210:3500/singUp", 
                 data: {user: $('#newUser').val(),
                         pass: $('#newPass').val()},
                 dataType: "json",
@@ -156,7 +156,7 @@
                         alert(result.err)
                     }
                     if(result.scc){
-                        window.location.href = "http://localhost:3500/";
+                        window.location.href = "http://217.71.203.210:3500/";
                     }
                 },
                 error: (err) => {
